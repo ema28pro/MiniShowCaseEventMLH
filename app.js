@@ -11,17 +11,6 @@ const emptyState = document.getElementById('empty-state');
 // Statistics
 const statArtworks = document.getElementById('stat-artworks');
 
-// Modal Lightbox
-const modalOverlay = document.getElementById('artwork-modal');
-const modalClose = document.getElementById('modal-close');
-const modalImage = document.getElementById('modal-image');
-const modalAvatar = document.getElementById('modal-avatar');
-const modalUsername = document.getElementById('modal-username');
-const modalTimestamp = document.getElementById('modal-timestamp');
-const modalText = document.getElementById('modal-text');
-const modalReactions = document.getElementById('modal-reactions');
-const modalDiscordLink = document.getElementById('modal-discord-link');
-
 // Start the application
 document.addEventListener('DOMContentLoaded', async () => {
   await loadArtworks();
@@ -97,11 +86,8 @@ function renderGallery() {
 
   galleryGrid.innerHTML = artworksData.map(art => `
     <div class="museum-card" id="card-${art.id}">
-      <div class="artwork-frame" onclick="openArtworkModal('${art.id}')">
+      <div class="artwork-frame">
         <img src="${art.artwork_url}" alt="Artwork by ${escapeHTML(art.username)}" class="artwork-img" loading="lazy">
-        <div class="frame-overlay">
-          <span class="zoom-badge">🔍 Inspect</span>
-        </div>
       </div>
       <div class="museum-plaque">
         ${art.text ? `<p class="artwork-caption">"${escapeHTML(art.text)}"</p>` : ''}
@@ -153,54 +139,10 @@ window.addReaction = function(artworkId, emoji) {
 
   updateStats();
   renderGallery();
-
-  // Keep the open modal in sync if it is showing this artwork
-  if (modalOverlay.classList.contains('active')) {
-    modalReactions.innerHTML = renderReactions(art);
-  }
 };
 
-// Open the high-resolution detail modal
-window.openArtworkModal = function(artworkId) {
-  const art = artworksData.find(a => a.id === artworkId);
-  if (!art) return;
-
-  modalImage.src = art.artwork_url;
-  modalAvatar.src = art.avatar;
-  modalUsername.innerText = art.username;
-  modalTimestamp.innerText = art.timestamp ? `Posted at ${art.timestamp}` : 'Discord capture';
-  
-  if (art.text) {
-    modalText.style.display = 'block';
-    modalText.innerText = `"${art.text}"`;
-  } else {
-    modalText.style.display = 'none';
-  }
-
-  modalReactions.innerHTML = renderReactions(art);
-  modalDiscordLink.href = art.artwork_url;
-
-  modalOverlay.classList.add('active');
-  document.body.style.overflow = 'hidden';
-};
-
-function closeModal() {
-  modalOverlay.classList.remove('active');
-  document.body.style.overflow = '';
-}
-
-// Event Listeners
 function setupEventListeners() {
-  // Modal close
-  modalClose.addEventListener('click', closeModal);
-  modalOverlay.addEventListener('click', (e) => {
-    if (e.target === modalOverlay) closeModal();
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modalOverlay.classList.contains('active')) {
-      closeModal();
-    }
-  });
+  // Application level event listeners if needed
 }
 
 function escapeHTML(str) {

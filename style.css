@@ -353,7 +353,6 @@ body {
   overflow: hidden;
   width: 100%;
   height: auto;
-  cursor: pointer;
   display: block;
 }
 
@@ -362,40 +361,6 @@ body {
   height: auto;
   display: block;
   border-radius: var(--radius-sm);
-  transition: transform 0.35s ease;
-}
-
-.artwork-frame:hover .artwork-img {
-  transform: scale(1.025);
-}
-
-.frame-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.45);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.artwork-frame:hover .frame-overlay {
-  opacity: 1;
-}
-
-.zoom-badge {
-  padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(8px);
-  color: var(--gold-primary);
-  border: 1px solid var(--border-gold);
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 /* Museum Plaque (Info Box) - no separator line */
@@ -516,154 +481,6 @@ body {
 .empty-icon {
   font-size: 3rem;
   margin-bottom: 12px;
-}
-
-/* Modal Lightbox */
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(5, 7, 10, 0.9);
-  backdrop-filter: blur(16px);
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.modal-overlay.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-content {
-  background: var(--bg-card);
-  border: 1px solid var(--border-gold);
-  border-radius: var(--radius-lg);
-  max-width: 950px;
-  width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9);
-  display: flex;
-  flex-direction: column;
-}
-
-.modal-close {
-  position: absolute;
-  top: 16px;
-  right: 18px;
-  background: rgba(0, 0, 0, 0.6);
-  border: 1px solid var(--border-subtle);
-  color: #fff;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  font-size: 1.4rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  transition: var(--transition);
-}
-
-.modal-close:hover {
-  background: var(--gold-primary);
-  color: #000;
-}
-
-.modal-frame {
-  background: #000;
-  padding: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 350px;
-}
-
-.modal-img {
-  max-width: 100%;
-  max-height: 60vh;
-  object-fit: contain;
-  border-radius: var(--radius-sm);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-}
-
-.modal-info {
-  padding: 24px 30px;
-}
-
-.modal-artist-header {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  margin-bottom: 16px;
-}
-
-.modal-artist-avatar {
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  border: 2px solid var(--gold-primary);
-}
-
-.modal-artist-name {
-  font-size: 1.3rem;
-  color: #fff;
-}
-
-.modal-time {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
-.modal-caption {
-  font-size: 1.05rem;
-  color: var(--text-secondary);
-  font-style: italic;
-  margin-bottom: 20px;
-  padding: 12px 16px;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--gold-primary);
-}
-
-.modal-reactions-container h4 {
-  font-size: 0.9rem;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-}
-
-.modal-reactions-list {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 24px;
-}
-
-.btn-discord-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 20px;
-  background: var(--accent-blue);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  font-size: 0.9rem;
-  transition: var(--transition);
-}
-
-.btn-discord-link:hover {
-  background: #4752c4;
 }
 
 /* Footer */
