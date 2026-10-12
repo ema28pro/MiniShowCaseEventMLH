@@ -104,6 +104,17 @@ body {
   text-align: left;
 }
 
+.mlh-brand {
+  display: inline-block;
+  margin-bottom: 14px;
+}
+
+.mlh-logo {
+  display: block;
+  height: 38px;
+  width: auto;
+}
+
 .badge-tag {
   display: inline-block;
   padding: 6px 16px;
@@ -241,10 +252,20 @@ body {
 }
 
 .gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-  gap: 28px;
-  align-items: start;
+  column-count: 3;
+  column-gap: 20px;
+}
+
+@media (max-width: 1100px) {
+  .gallery-grid {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 650px) {
+  .gallery-grid {
+    column-count: 1;
+  }
 }
 
 /* The Museum Frame Card */
@@ -258,6 +279,8 @@ body {
   flex-direction: column;
   transition: var(--transition);
   position: relative;
+  break-inside: avoid;
+  margin-bottom: 20px;
 }
 
 .museum-card:hover {
@@ -319,14 +342,14 @@ body {
   gap: 6px;
 }
 
-/* Museum Plaque (Info Box) */
+/* Museum Plaque (Info Box) - Sin línea separadora */
 .museum-plaque {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid var(--border-subtle);
+  margin-top: 10px;
+  padding-top: 4px;
+  border-top: none;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .artwork-caption {
