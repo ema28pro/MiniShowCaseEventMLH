@@ -257,106 +257,6 @@ body {
   }
 }
 
-/* Gallery Controls */
-.gallery-controls {
-  position: relative;
-  z-index: 2;
-  max-width: 1300px;
-  margin: 0 auto 35px;
-  padding: 0 24px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-.search-box {
-  position: relative;
-  flex: 1;
-  min-width: 260px;
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 18px;
-  height: 18px;
-  color: var(--text-muted);
-}
-
-.search-box input {
-  width: 100%;
-  padding: 12px 14px 12px 42px;
-  background: rgba(19, 23, 32, 0.8);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  color: #fff;
-  font-size: 0.95rem;
-  font-family: inherit;
-  outline: none;
-  transition: var(--transition);
-}
-
-.search-box input:focus {
-  border-color: var(--gold-primary);
-  box-shadow: 0 0 0 3px var(--gold-glow);
-}
-
-.filter-pills {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.filter-btn {
-  background: rgba(19, 23, 32, 0.8);
-  border: 1px solid var(--border-subtle);
-  color: var(--text-secondary);
-  padding: 9px 18px;
-  border-radius: 100px;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: var(--transition);
-  font-family: inherit;
-}
-
-.filter-btn:hover {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.filter-btn.active {
-  background: var(--gold-primary);
-  color: #0b0d11;
-  border-color: var(--gold-primary);
-  font-weight: 600;
-  box-shadow: 0 4px 14px rgba(229, 185, 95, 0.3);
-}
-
-.import-json-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 18px;
-  background: rgba(88, 101, 242, 0.15);
-  border: 1px solid rgba(88, 101, 242, 0.4);
-  color: #8c97ff;
-  border-radius: var(--radius-md);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.import-json-btn:hover {
-  background: var(--accent-blue);
-  color: #fff;
-}
-
 /* Gallery Container & Museum Cards */
 .gallery-container {
   position: relative;
@@ -447,33 +347,52 @@ body {
 
 /* Museum Plaque (Info Box) */
 .museum-plaque {
-  margin-top: 16px;
-  padding-top: 14px;
+  margin-top: 14px;
+  padding-top: 12px;
   border-top: 1px solid var(--border-subtle);
   display: flex;
   flex-direction: column;
   gap: 12px;
-  flex: 1;
+}
+
+.artwork-caption {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  font-style: italic;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--gold-primary);
+  word-break: break-word;
+}
+
+.plaque-bottom-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .artist-bar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  min-width: 0;
 }
 
 .artist-avatar {
-  width: 44px;
-  height: 44px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
   object-fit: cover;
   border: 2px solid var(--gold-primary);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
   background: #2a2e39;
+  flex-shrink: 0;
 }
 
 .artist-details {
-  flex: 1;
   min-width: 0;
 }
 
@@ -491,24 +410,13 @@ body {
   color: var(--text-muted);
 }
 
-.artwork-caption {
-  font-size: 0.92rem;
-  color: var(--text-secondary);
-  font-style: italic;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 8px 12px;
-  border-radius: var(--radius-sm);
-  border-left: 3px solid var(--gold-primary);
-}
-
-/* Reactions Bar */
+/* Reactions Bar (Alineado al lado derecho) */
 .reactions-bar {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   flex-wrap: wrap;
-  margin-top: auto;
-  padding-top: 8px;
+  margin-left: auto;
 }
 
 .reaction-pill {

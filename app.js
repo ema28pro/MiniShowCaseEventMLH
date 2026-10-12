@@ -3,15 +3,10 @@
 // ==========================================================================
 
 let artworksData = [];
-let currentFilter = 'all';
-let searchQuery = '';
 
 // DOM elements
 const galleryGrid = document.getElementById('gallery-grid');
 const emptyState = document.getElementById('empty-state');
-const searchInput = document.getElementById('search-input');
-const filterButtons = document.querySelectorAll('.filter-btn');
-const jsonFileInput = document.getElementById('json-file-input');
 
 // Statistics
 const statArtworks = document.getElementById('stat-artworks');
@@ -90,30 +85,9 @@ function updateStats() {
   statArtworks.innerText = artworksData.length;
 }
 
-// Render main gallery
+// Render main gallery (in order of appearance)
 function renderGallery() {
-  let filtered = [...artworksData];
-
-  // Text search filter
-  if (searchQuery) {
-    const q = searchQuery.toLowerCase();
-    filtered = filtered.filter(art => 
-      art.username.toLowerCase().includes(q) || 
-      art.text.toLowerCase().includes(q)
-    );
-  }
-
-  // Category filters
-  if (currentFilter === 'popular') {
-    filtered.sort((a, b) => b.total_reactions - a.total_reactions);
-  } else if (currentFilter === 'captioned') {
-    filtered = filtered.filter(art => art.text && art.text.length > 0);
-  } else if (currentFilter === 'recent') {
-    // reverse of the original order
-    filtered.reverse();
-  }
-
-  if (filtered.length === 0) {
+  if (artworksData.length === 0) {
     galleryGrid.innerHTML = '';
     emptyState.style.display = 'block';
     return;
@@ -121,7 +95,7 @@ function renderGallery() {
 
   emptyState.style.display = 'none';
 
-  galleryGrid.innerHTML = filtered.map(art => `
+  galleryGrid.innerHTML = artworksData.map(art => `
     <div class="museum-card" id="card-${art.id}">
       <div class="artwork-frame" onclick="openArtworkModal('${art.id}')">
         <img src="${art.artwork_url}" alt="Artwork by ${art.username}" class="artwork-img" loading="lazy">
@@ -130,18 +104,20 @@ function renderGallery() {
         </div>
       </div>
       <div class="museum-plaque">
-        <div class="artist-bar">
-          <img src="${art.avatar}" alt="${art.username}" class="artist-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
-          <div class="artist-details">
-            <h4 class="artist-name">${escapeHTML(art.username)}</h4>
-            <span class="artist-time">${art.timestamp || 'Posted on Discord'}</span>
-          </div>
-        </div>
-
         ${art.text ? `<p class="artwork-caption">"${escapeHTML(art.text)}"</p>` : ''}
 
-        <div class="reactions-bar">
-          ${renderReactions(art)}
+        <div class="plaque-bottom-row">
+          <div class="artist-bar">
+            <img src="${art.avatar}" alt="${art.username}" class="artist-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+            <div class="artist-details">
+              <h4 class="artist-name">${escapeHTML(art.username)}</h4>
+              <span class="artist-time">${art.timestamp || 'Discord'}</span>
+            </div>
+          </div>
+
+          <div class="reactions-bar">
+            ${renderReactions(art)}
+          </div>
         </div>
       </div>
     </div>
@@ -210,42 +186,6 @@ function closeModal() {
 
 // Event Listeners
 function setupEventListeners() {
-  // Search
-  searchInput.addEventListener('input', (e) => {
-    searchQuery = e.target.value.trim();
-    renderGallery();
-  });
-
-  // Filters
-  filterButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      currentFilter = btn.dataset.filter;
-      renderGallery();
-    });
-  });
-
-  // Import external JSON
-  jsonFileInput.addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      try {
-        const imported = JSON.parse(event.target.result);
-        artworksData = sanitizeArtworks(imported);
-        updateStats();
-        renderGallery();
-        alert(`Successfully imported ${artworksData.length} artworks!`);
-      } catch (err) {
-        alert('The selected file is not valid JSON.');
-      }
-    };
-    reader.readAsText(file);
-  });
-
   // Modal close
   modalClose.addEventListener('click', closeModal);
   modalOverlay.addEventListener('click', (e) => {
