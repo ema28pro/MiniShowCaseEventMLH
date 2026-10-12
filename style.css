@@ -200,32 +200,6 @@ body {
   border-color: #ffd074;
 }
 
-.video-card-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 18px;
-  background: rgba(10, 13, 18, 0.85);
-  border-bottom: 1px solid var(--border-subtle);
-  gap: 10px;
-}
-
-.video-tag {
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--gold-primary);
-  letter-spacing: 1px;
-}
-
-.video-title {
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-  font-family: inherit;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .video-aspect-box {
   position: relative;
   width: 100%;
