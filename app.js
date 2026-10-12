@@ -98,7 +98,7 @@ function renderGallery() {
   galleryGrid.innerHTML = artworksData.map(art => `
     <div class="museum-card" id="card-${art.id}">
       <div class="artwork-frame" onclick="openArtworkModal('${art.id}')">
-        <img src="${art.artwork_url}" alt="Artwork by ${art.username}" class="artwork-img" loading="lazy">
+        <img src="${art.artwork_url}" alt="Artwork by ${escapeHTML(art.username)}" class="artwork-img" loading="lazy">
         <div class="frame-overlay">
           <span class="zoom-badge">🔍 Inspect</span>
         </div>
@@ -108,7 +108,7 @@ function renderGallery() {
 
         <div class="plaque-bottom-row">
           <div class="artist-bar">
-            <img src="${art.avatar}" alt="${art.username}" class="artist-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+            <img src="${art.avatar}" alt="${escapeHTML(art.username)}" class="artist-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
             <div class="artist-details">
               <h4 class="artist-name">${escapeHTML(art.username)}</h4>
               <span class="artist-time">${art.timestamp || 'Discord'}</span>
@@ -153,6 +153,11 @@ window.addReaction = function(artworkId, emoji) {
 
   updateStats();
   renderGallery();
+
+  // Keep the open modal in sync if it is showing this artwork
+  if (modalOverlay.classList.contains('active')) {
+    modalReactions.innerHTML = renderReactions(art);
+  }
 };
 
 // Open the high-resolution detail modal

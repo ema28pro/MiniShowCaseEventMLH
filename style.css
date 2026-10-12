@@ -189,7 +189,6 @@ body {
 .btn-jspaint:hover {
   background: var(--gold-primary);
   color: #0b0d11;
-  transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(229, 185, 95, 0.35);
 }
 
@@ -197,11 +196,6 @@ body {
   display: inline-block;
   vertical-align: middle;
   flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.btn-jspaint:hover .external-icon {
-  transform: translate(2px, -2px);
 }
 
 .btn-jspaint strong {
