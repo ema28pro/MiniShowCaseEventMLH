@@ -87,7 +87,7 @@ function renderGallery() {
   galleryGrid.innerHTML = artworksData.map(art => `
     <div class="museum-card" id="card-${art.id}">
       <div class="artwork-frame">
-        <img src="${art.artwork_url}" alt="Artwork by ${escapeHTML(art.username)}" class="artwork-img" loading="lazy">
+        <img src="${art.artwork_url}" alt="Artwork by ${escapeHTML(art.username)}" class="artwork-img" decoding="async">
       </div>
       <div class="museum-plaque">
         ${art.text ? `<p class="artwork-caption">"${escapeHTML(art.text)}"</p>` : ''}

@@ -41,6 +41,13 @@ const server = http.createServer((req, res) => {
 
   const filePath = path.join(__dirname, decodeURIComponent(safePath));
 
+  // Prevent path traversal: never serve files outside the project directory
+  if (filePath !== __dirname && !filePath.startsWith(__dirname + path.sep)) {
+    res.writeHead(403, { 'Content-Type': 'text/plain; charset=utf-8' });
+    res.end('403 Forbidden');
+    return;
+  }
+
   fs.stat(filePath, (err, stats) => {
     if (err || !stats.isFile()) {
       res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
