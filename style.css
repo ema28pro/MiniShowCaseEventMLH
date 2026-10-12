@@ -1,5 +1,5 @@
 /* ==========================================================================
-   MUSEO DE ARTE MLH - ESTILOS VISUALES & LUXURY DARK GALLERY
+   MLH ART MUSEUM - VISUAL STYLES & LUXURY DARK GALLERY
    ========================================================================== */
 
 :root {
@@ -144,7 +144,9 @@ body {
   line-height: 1.15;
   background: linear-gradient(135deg, #ffffff 30%, var(--gold-primary) 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
   margin-bottom: 14px;
   text-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
@@ -161,7 +163,7 @@ body {
   font-weight: 300;
 }
 
-/* Acciones del Hero: Botón JS Paint y Stats */
+/* Hero actions: JS Paint button and stats */
 .hero-actions-row {
   display: flex;
   align-items: center;
@@ -189,6 +191,17 @@ body {
   color: #0b0d11;
   transform: translateY(-2px);
   box-shadow: 0 6px 18px rgba(229, 185, 95, 0.35);
+}
+
+.external-icon {
+  display: inline-block;
+  vertical-align: middle;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.btn-jspaint:hover .external-icon {
+  transform: translate(2px, -2px);
 }
 
 .btn-jspaint strong {
@@ -237,7 +250,7 @@ body {
   margin-top: 4px;
 }
 
-/* Hero Video Card (A un lado en el principio) */
+/* Hero Video Card (side by side at the top) */
 .hero-video-side {
   width: 100%;
 }
@@ -278,6 +291,10 @@ body {
   }
   .hero-text-side {
     text-align: center;
+  }
+  .hero-top-row,
+  .hero-actions-row {
+    justify-content: center;
   }
   .stats-ribbon {
     justify-content: center;
@@ -334,7 +351,7 @@ body {
   box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.9), 0 0 20px rgba(229, 185, 95, 0.15);
 }
 
-/* Image Frame - Sin fondo negro, adaptado al tamaño de cada obra */
+/* Image Frame - no black background, adapts to each artwork's size */
 .artwork-frame {
   position: relative;
   background: transparent;
@@ -387,7 +404,7 @@ body {
   gap: 6px;
 }
 
-/* Museum Plaque (Info Box) - Sin línea separadora */
+/* Museum Plaque (Info Box) - no separator line */
 .museum-plaque {
   margin-top: 10px;
   padding-top: 4px;
@@ -452,7 +469,7 @@ body {
   color: var(--text-muted);
 }
 
-/* Reactions Bar (Alineado al lado derecho) */
+/* Reactions Bar (aligned to the right) */
 .reactions-bar {
   display: flex;
   align-items: center;
@@ -675,7 +692,7 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .gallery-grid {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
   .museum-header {
     padding: 40px 16px 20px;
@@ -684,7 +701,7 @@ body {
     gap: 10px;
   }
   .stat-card {
-    min-width: 130px;
+    min-width: 0;
     padding: 12px 16px;
   }
 }
