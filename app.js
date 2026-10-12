@@ -94,7 +94,7 @@ function renderGallery() {
 
         <div class="plaque-bottom-row">
           <div class="artist-bar">
-            <img src="${art.avatar}" alt="${escapeHTML(art.username)}" class="artist-avatar" onerror="this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
+            <img src="${art.avatar}" alt="${escapeHTML(art.username)}" class="artist-avatar" onerror="this.onerror=null; this.src='https://cdn.discordapp.com/embed/avatars/0.png'">
             <div class="artist-details">
               <h4 class="artist-name">${escapeHTML(art.username)}</h4>
               <span class="artist-time">${art.timestamp || 'Discord'}</span>
@@ -113,19 +113,19 @@ function renderGallery() {
 // Render reaction pills
 function renderReactions(art) {
   if (!art.reactions || art.reactions.length === 0) {
-    return `<span class="reaction-pill" onclick="addReaction('${art.id}', '❤️')"><span class="reaction-emoji">❤️</span> <span class="reaction-count">0</span></span>`;
+    return `<span class="reaction-pill" onclick="addReaction('${art.id}', '❤️', this)"><span class="reaction-emoji">❤️</span> <span class="reaction-count">0</span></span>`;
   }
 
   return art.reactions.map(r => `
-    <span class="reaction-pill" onclick="addReaction('${art.id}', '${r.emoji}')" title="Click to react with ${r.emoji}">
+    <span class="reaction-pill" onclick="addReaction('${art.id}', '${r.emoji}', this)" title="Click to react with ${r.emoji}">
       <span class="reaction-emoji">${r.emoji}</span>
       <span class="reaction-count">${r.count}</span>
     </span>
   `).join('');
 }
 
-// Interactive effect when a reaction is clicked
-window.addReaction = function(artworkId, emoji) {
+// Interactive effect when a reaction is clicked (in-place update, avoids re-rendering the whole DOM)
+window.addReaction = function(artworkId, emoji, el) {
   const art = artworksData.find(a => a.id === artworkId);
   if (!art) return;
 
@@ -137,8 +137,22 @@ window.addReaction = function(artworkId, emoji) {
   }
   art.total_reactions += 1;
 
-  updateStats();
-  renderGallery();
+  // Update ONLY the counter in the clicked button so no images reload or flicker
+  if (el) {
+    const countSpan = el.querySelector('.reaction-count');
+    if (countSpan) {
+      countSpan.innerText = r ? r.count : 1;
+      return;
+    }
+  }
+
+  const card = document.getElementById(`card-${artworkId}`);
+  if (card) {
+    const reactionsBar = card.querySelector('.reactions-bar');
+    if (reactionsBar) {
+      reactionsBar.innerHTML = renderReactions(art);
+    }
+  }
 };
 
 function setupEventListeners() {
