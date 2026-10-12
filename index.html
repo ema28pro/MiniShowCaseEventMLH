@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Museo Virtual • MLH Mini Event Art Gallery</title>
+  <meta name="description" content="Galería y Museo Virtual de Arte del Mini Evento de Major League Hacking (MLH) Bob Ross Painting Showcase">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Fondo con ambientación de museo -->
+  <div class="museum-ambiance">
+    <div class="spotlight spotlight-1"></div>
+    <div class="spotlight spotlight-2"></div>
+    <div class="spotlight spotlight-3"></div>
+  </div>
+
+  <!-- Header del Museo -->
+  <header class="museum-header">
+    <div class="header-banner">
+      <span class="badge-tag">MAJOR LEAGUE HACKING • MINI EVENT</span>
+      <h1 class="museum-title">BOB ROSS DIGITAL GALLERY</h1>
+      <p class="museum-subtitle">
+        Exhibición oficial de obras y capturas creadas por la comunidad hackathon. 
+        "No cometemos errores, solo felices accidentes."
+      </p>
+    </div>
+
+    <!-- Estadísticas en vivo -->
+    <div class="stats-ribbon">
+      <div class="stat-card">
+        <span class="stat-number" id="stat-artworks">0</span>
+        <span class="stat-label">Obras Exhibidas</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="stat-reactions">0</span>
+        <span class="stat-label">Reacciones Totales</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number" id="stat-top-artist">-</span>
+        <span class="stat-label">Artista Más Votado</span>
+      </div>
+    </div>
+
+    <!-- Banner del Tutorial Original de Bob Ross -->
+    <div class="tutorial-banner">
+      <div class="tutorial-header">
+        <span class="tutorial-tag">🔥 TUTORIAL DE REFERENCIA DEL EVENTO</span>
+        <div class="tutorial-meta">
+          <h2 class="tutorial-title">Bob Ross — Campfire (Temporada 3, Episodio 10)</h2>
+          <p class="tutorial-desc">
+            Pintura original de referencia que todos los hackers debían recrear en vivo durante el mini-evento de Major League Hacking (MLH).
+          </p>
+        </div>
+      </div>
+      <div class="tutorial-actions">
+        <button class="btn-toggle-video" id="btn-toggle-video">
+          <span class="play-icon">▶</span> Reproducir Tutorial Aquí
+        </button>
+        <a href="https://www.youtube.com/watch?v=L5bXkI0-pEg" target="_blank" rel="noopener" class="btn-youtube-link">
+          Ver en YouTube ↗
+        </a>
+      </div>
+      <div class="tutorial-embed-wrapper" id="tutorial-embed-wrapper" style="display: none;">
+        <div class="embed-responsive">
+          <iframe 
+            id="tutorial-iframe" 
+            src="" 
+            data-src="https://www.youtube-nocookie.com/embed/L5bXkI0-pEg" 
+            title="Bob Ross - Campfire (Season 3 Episode 10)" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sección: Podio de Honor (Top 3) -->
+  <section class="podium-section" id="podium-container">
+    <h2 class="section-title">
+      <span class="gold-accent">✦</span> Salón de Honor • Obras Maestras <span class="gold-accent">✦</span>
+    </h2>
+    <div class="podium-grid" id="podium-grid">
+      <!-- Se genera dinámicamente con JS -->
+    </div>
+  </section>
+
+  <!-- Barra de Filtros y Búsqueda -->
+  <section class="gallery-controls">
+    <div class="search-box">
+      <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" placeholder="Buscar por artista o descripción...">
+    </div>
+
+    <div class="filter-pills">
+      <button class="filter-btn active" data-filter="all">Todas las Obras</button>
+      <button class="filter-btn" data-filter="popular">Más Votadas 🔥</button>
+      <button class="filter-btn" data-filter="captioned">Con Descripción 💬</button>
+      <button class="filter-btn" data-filter="recent">Más Recientes ⏱️</button>
+    </div>
+
+    <label class="import-json-btn" title="Cargar un nuevo archivo artworks.json">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+        <polyline points="17 8 12 3 7 8"></polyline>
+        <line x1="12" y1="3" x2="12" y2="15"></line>
+      </svg>
+      Importar JSON
+      <input type="file" id="json-file-input" accept=".json" style="display: none;">
+    </label>
+  </section>
+
+  <!-- Galería Principal -->
+  <main class="gallery-container">
+    <div class="gallery-grid" id="gallery-grid">
+      <!-- Tarjetas de museo inyectadas por JS -->
+    </div>
+
+    <div class="empty-state" id="empty-state" style="display: none;">
+      <p class="empty-icon">🎨</p>
+      <h3>No se encontraron obras</h3>
+      <p>Prueba con otro término de búsqueda o cambia de filtro.</p>
+    </div>
+  </main>
+
+  <!-- Modal / Lightbox de Obra -->
+  <div class="modal-overlay" id="artwork-modal">
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div class="modal-frame">
+        <img src="" alt="Obra de arte" id="modal-image" class="modal-img">
+      </div>
+      <div class="modal-info">
+        <div class="modal-artist-header">
+          <img src="" alt="Avatar" id="modal-avatar" class="modal-artist-avatar">
+          <div>
+            <h3 id="modal-username" class="modal-artist-name"></h3>
+            <span id="modal-timestamp" class="modal-time"></span>
+          </div>
+        </div>
+        <p id="modal-text" class="modal-caption"></p>
+        <div class="modal-reactions-container">
+          <h4>Reacciones de Discord:</h4>
+          <div id="modal-reactions" class="modal-reactions-list"></div>
+        </div>
+        <a id="modal-discord-link" href="#" target="_blank" rel="noopener" class="btn-discord-link">
+          Ver Imagen Original en Alta Calidad ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="museum-footer">
+    <p>Museo de Arte Mini-Evento MLH • Bob Ross Showcase Hackathon</p>
+    <p class="footer-small">Datos extraídos en vivo desde Discord con el scraper personalizado.</p>
+  </footer>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
