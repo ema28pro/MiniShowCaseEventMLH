@@ -216,51 +216,5 @@ window.EMBEDDED_ARTWORKS = [
       }
     ],
     "total_reactions": 6
-  },
-  {
-    "id": "1156291986509267105-1559323983692828682",
-    "username": "Freddy from MLH 🔮",
-    "avatar": "https://cdn.discordapp.com/avatars/491619589881593858/1e8caaf063314f854d6aa64bbc4c8cb0.webp?size=80",
-    "timestamp": "16:56",
-    "text": "",
-    "artwork_url": "https://cdn.discordapp.com/attachments/1156291986509267105/1559323983482982400/IMG_3062.jpg?ex=6acea920&is=6acd57a0&hm=4b7940ff5d0b50c2362815d5d79acbd5be74e496b9c61f928dbe6be52b04e49e&",
-    "reactions": [
-      {
-        "emoji": "😲",
-        "count": 1
-      },
-      {
-        "emoji": "👍",
-        "count": 1
-      },
-      {
-        "emoji": "💯",
-        "count": 1
-      },
-      {
-        "emoji": "❤️",
-        "count": 1
-      }
-    ],
-    "total_reactions": 4
-  },
-  {
-    "id": "1156291986509267105-1559324281660375150",
-    "username": "Swayam_Takkamore",
-    "avatar": "https://cdn.discordapp.com/avatars/756163690646208512/54d389617d4d2b3a527dbd10a63c025c.webp?size=80",
-    "timestamp": "16:57",
-    "text": "",
-    "artwork_url": "https://cdn.discordapp.com/attachments/1156291986509267105/1559324281232687144/rn_image_picker_lib_temp_108bd2dd-f0b3-43fb-aaf0-6a39b986df2b.jpg?ex=6acea967&is=6acd57e7&hm=9627aceb83083b5a8e8ca42ef7c2a9d433ea570e3ddb4604098f4601c3545420&",
-    "reactions": [
-      {
-        "emoji": "👍",
-        "count": 1
-      },
-      {
-        "emoji": "🐨",
-        "count": 1
-      }
-    ],
-    "total_reactions": 2
   }
 ];
