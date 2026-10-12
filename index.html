@@ -21,23 +21,37 @@
   <!-- Museum header with video on the side -->
   <header class="museum-header">
     <div class="hero-container">
-      <!-- Left column: info and statistics -->
+      <!-- Left column: info, jspaint link and statistics -->
       <div class="hero-text-side">
-        <a href="https://mlh.io" target="_blank" rel="noopener" class="mlh-brand" aria-label="Major League Hacking">
-          <img src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-white.svg" alt="Major League Hacking" class="mlh-logo">
-        </a>
-        <span class="badge-tag">MAJOR LEAGUE HACKING • MINI EVENT</span>
+        <div class="hero-top-row">
+          <a href="https://mlh.io" target="_blank" rel="noopener" class="mlh-brand" aria-label="Major League Hacking">
+            <img src="https://static.mlh.io/brand-assets/logo/official/mlh-logo-white.svg" alt="Major League Hacking" class="mlh-logo">
+          </a>
+          <span class="badge-tag">MINI EVENT</span>
+        </div>
+
         <h1 class="museum-title">BOB ROSS DIGITAL GALLERY</h1>
+        
         <p class="museum-subtitle">
-          Official exhibition of artworks and captures created by the hackathon community recreating <em>"Campfire"</em> live.
-          <br><em>"We don't make mistakes, just happy little accidents."</em>
+          Exhibición oficial de obras y capturas creadas en vivo por la comunidad hackathon recreando el clásico <em>"Campfire"</em>.
+          <br><em>"No cometemos errores, solo felices accidentes."</em>
         </p>
 
-        <!-- Live statistics -->
-        <div class="stats-ribbon">
-          <div class="stat-card">
-            <span class="stat-number" id="stat-artworks">0</span>
-            <span class="stat-label">Artworks Exhibited</span>
+        <!-- Enlace a JS Paint y Estadísticas -->
+        <div class="hero-actions-row">
+          <a href="https://jspaint.app/" target="_blank" rel="noopener" class="btn-jspaint" title="Abrir JS Paint en el navegador">
+            <span class="jspaint-icon">🎨</span> Creado en <strong>JS Paint</strong> (jspaint.app) ↗
+          </a>
+
+          <div class="stats-ribbon">
+            <div class="stat-card">
+              <span class="stat-number" id="stat-artworks">0</span>
+              <span class="stat-label">Obras Exhibidas</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number" id="stat-reactions">0</span>
+              <span class="stat-label">Reacciones</span>
+            </div>
           </div>
         </div>
       </div>

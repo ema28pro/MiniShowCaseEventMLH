@@ -95,8 +95,8 @@ body {
 
 .hero-container {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 45px;
+  grid-template-columns: 0.95fr 1.25fr;
+  gap: 40px;
   align-items: center;
 }
 
@@ -104,34 +104,41 @@ body {
   text-align: left;
 }
 
+.hero-top-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+}
+
 .mlh-brand {
   display: inline-block;
-  margin-bottom: 14px;
+  line-height: 1;
 }
 
 .mlh-logo {
   display: block;
-  height: 38px;
+  height: 34px;
   width: auto;
 }
 
 .badge-tag {
   display: inline-block;
-  padding: 6px 16px;
+  padding: 5px 14px;
   background: rgba(229, 185, 95, 0.12);
   border: 1px solid var(--border-gold);
   border-radius: 100px;
   color: var(--gold-primary);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 2px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  margin-bottom: 18px;
 }
 
 .museum-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(2rem, 3.6vw, 3.2rem);
   font-weight: 900;
   letter-spacing: 2px;
   line-height: 1.15;
@@ -143,17 +150,51 @@ body {
 }
 
 .museum-subtitle {
-  font-size: 1.05rem;
+  font-size: 1rem;
   color: var(--text-secondary);
   line-height: 1.6;
-  margin-bottom: 26px;
+  margin-bottom: 22px;
   font-weight: 300;
+}
+
+/* Acciones del Hero: Botón JS Paint y Stats */
+.hero-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.btn-jspaint {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 18px;
+  background: rgba(229, 185, 95, 0.1);
+  border: 1px solid var(--border-gold);
+  border-radius: var(--radius-md);
+  color: var(--gold-primary);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.btn-jspaint:hover {
+  background: var(--gold-primary);
+  color: #0b0d11;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(229, 185, 95, 0.35);
+}
+
+.btn-jspaint strong {
+  font-weight: 700;
 }
 
 /* Stats Ribbon */
 .stats-ribbon {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -162,8 +203,8 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  padding: 14px 22px;
-  min-width: 140px;
+  padding: 10px 18px;
+  min-width: 120px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
