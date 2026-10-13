@@ -1,4 +1,7 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [
@@ -20,7 +23,7 @@
       ]
     },
     {
-      "source": "/(artworks\\.json|data\\.js)",
+      "source": "/(artworks\\.json|data\\.js|gallery\\.js|style\\.css|favicon\\.svg)",
       "headers": [
         {
           "key": "Cache-Control",
