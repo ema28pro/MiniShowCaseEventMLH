@@ -1,6 +1,4 @@
 {
-  "version": 2,
-  "name": "mlh-bob-ross-art-gallery",
   "cleanUrls": true,
   "trailingSlash": false,
   "headers": [

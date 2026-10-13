@@ -2,10 +2,8 @@
   "name": "mlh-bob-ross-mini-event-gallery",
   "version": "1.0.0",
   "description": "Museo Virtual del Mini Evento de Bob Ross Painting (MLH Major League Hacking)",
-  "main": "index.html",
   "scripts": {
-    "dev": "node server.js",
-    "start": "node server.js"
+    "dev": "node server.js"
   },
   "keywords": [
     "bob-ross",
