@@ -3,16 +3,15 @@
 // ==========================================================================
 
 let artworksData = [];
-
-// DOM elements
-const galleryGrid = document.getElementById('gallery-grid');
-const emptyState = document.getElementById('empty-state');
-
-// Statistics
-const statArtworks = document.getElementById('stat-artworks');
+let galleryGrid = null;
+let emptyState = null;
+let statArtworks = null;
 
 // Start the application
 document.addEventListener('DOMContentLoaded', async () => {
+  galleryGrid = document.getElementById('gallery-grid');
+  emptyState = document.getElementById('empty-state');
+  statArtworks = document.getElementById('stat-artworks');
   await loadArtworks();
   setupEventListeners();
 });

@@ -1,4 +1,4 @@
-window.EMBEDDED_ARTWORKS = [
+const EMBEDDED_ARTWORKS = [
   {
     "id": "1156291986509267105-1559319309560586291",
     "username": "Freddy from MLH 🔮",
@@ -208,3 +208,7 @@ window.EMBEDDED_ARTWORKS = [
     "total_reactions": 6
   }
 ];
+
+if (typeof window !== 'undefined') {
+  window.EMBEDDED_ARTWORKS = EMBEDDED_ARTWORKS;
+}
