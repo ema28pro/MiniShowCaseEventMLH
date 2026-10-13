@@ -88,8 +88,8 @@ body {
 .museum-header {
   position: relative;
   z-index: 2;
-  padding: 60px 24px 40px;
-  max-width: 1560px;
+  padding: 50px clamp(24px, 5vw, 64px) 36px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -302,30 +302,17 @@ body {
 .gallery-container {
   position: relative;
   z-index: 2;
-  max-width: 1560px;
+  max-width: 1280px;
   margin: 0 auto 80px;
-  padding: 0 24px;
+  padding: 0 clamp(24px, 5vw, 64px);
 }
 
 .gallery-grid {
   column-count: 3;
-  column-gap: 20px;
+  column-gap: 24px;
 }
 
-/* Wider screens: use the extra room for more columns instead of leaving big empty margins */
-@media (min-width: 1500px) {
-  .gallery-grid {
-    column-count: 4;
-  }
-}
-
-@media (min-width: 2000px) {
-  .gallery-grid {
-    column-count: 5;
-  }
-}
-
-@media (max-width: 1100px) {
+@media (max-width: 1024px) {
   .gallery-grid {
     column-count: 2;
   }
